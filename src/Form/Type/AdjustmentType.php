@@ -14,8 +14,6 @@ use Symfony\Component\Validator\Constraints\Range;
 
 final class AdjustmentType extends AbstractResourceType
 {
-    public const ORDER_DISCOUNT_ADJUSTMENT = 'order_discount';
-
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('amount', MoneyType::class, [
@@ -33,7 +31,6 @@ final class AdjustmentType extends AbstractResourceType
                 return;
             }
 
-            $adjustment->setType(self::ORDER_DISCOUNT_ADJUSTMENT);
             $adjustment->setLabel('sylius_admin_order_creation.ui.order_discount');
             $adjustment->setAmount(-1 * $adjustment->getAmount());
 
